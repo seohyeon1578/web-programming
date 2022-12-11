@@ -1,0 +1,20 @@
+{
+  "name": "database",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.6",
+    "debug": "~4.3.3",
+    "express": "~4.17.2",
+    "http-errors": "~2.0.0",
+    "mariadb": "^3.0.1",
+    "morgan": "~1.10.0",
+    "pug": "3.0.2",
+    "sequelize": "^6.25.3",
+    "sequelize-cli": "^6.5.1",
+    "sqlite3": "^5.1.2"
+  }
+}

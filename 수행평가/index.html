@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./index.js"></script>
+  <link rel="stylesheet" href="./index.css"/>
+  <title>2108김서현</title>
+</head>
+<body>
+  <aside>
+    <div id="alert">
+    </div>
+  </aside>
+  <section>
+    <form onsubmit="return checkAll()">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <span>거래처 정보</span>
+            </th>
+            <th class="content" colspan="3">
+              <span class="essential">*</span>
+              <span>표시는 필수입력항목입니다.</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="title"><span class="essential">*</span>사업자등록번호</td>
+            <td class="td-input">
+              <input type="text" id="corporateRegiNumber" placeholder="- 포함해서 입력해주세요."/>
+              <button type="button" class="check" onclick=checkCorporateRegiNumber()>확인</button>
+            </td>
+            <td class="title"><span class="essential">*</span>상호</td>
+            <td class="td-input"><input type="text" id="company" /></td>
+          </tr>
+          <tr>  
+            <td class="title"><span class="essential">*</span>대표자</td>
+            <td class="td-input"><input type="text" id="agent" /></td>
+            <td class="title padding-left">대표전화</td>
+            <td class="td-input"><input type="text" id="phone-number"  placeholder="- 포함해서 입력해주세요" /></td>
+          </tr>
+          <tr>
+            <td class="title padding-left">대표이메일</td>
+            <td colspan="3">
+              <input type="text" id="email" />
+              <span>@</span>
+              <input type="text" id="domain" />
+              <select id="domain-list"  onchange="changeDomain()" >
+                <option value="direct">직접입력</option>
+                <option value="naver.com">naver.com</option>
+                <option value="gmail.com">gmail.com</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="title"><span class="essential">*</span>거래처ID</td>
+            <td colspan="3">
+              <input type="text" id="client-id" />
+              <span class="error-msg">6~20자의 영문 소문자, 숫자만 사용 가능합니다.</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="title"><span class="essential">*</span>비밀번호</td>
+            <td colspan="3">
+              <input type="password" id="password" />
+              <span class="error-msg">8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="title"><span class="essential">*</span>비밀번호 확인</td>
+            <td colspan="3"><input type="password" id="confirm-password" /></td>
+          </tr>
+          <tr>
+            <td class="title"><span class="essential">*</span>분류</td>
+            <td colspan="3">
+              <input type="radio" name="company-size"  value="big">대기업</input>
+              <input type="radio" name="company-size"  value="medium">중소기업</input>
+              <input type="radio" name="company-size"  value="small">소공상인</input>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="4">
+              <span>담당자 정보</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="title"><span class="essential">*</span>성명</td>
+            <td colspan="3">
+              <input type="text" id="manager-name" />
+            </td>
+          </tr>
+          <tr>
+            <td class="title padding-left">부서</td>
+            <td class="td-input">
+              <input type="text" />
+            </td>
+            <td class="title padding-left">직책</td>
+            <td class="td-input">
+              <input type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td class="title padding-left">이메일</td>
+            <td colspan="3">
+              <input type="text" id="email" />
+              <span>@</span>
+              <input type="text" id="domain" />
+              <select id="domain-list"  onchange="changeDomain(1)">
+                <option value="direct">직접입력</option>
+                <option value="naver.com">naver.com</option>
+                <option value="gmail.com">gmail.com</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="title padding-left">전화</td>
+            <td class="td-input">
+              <input type="text" id="phone-number" placeholder="- 포함해서 입력해주세요" />
+            </td>
+            <td class="title padding-left">팩스</td>
+            <td class="td-input">
+              <input type="text" id="fax" placeholder="- 포함해서 입력해주세요" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">
+              <span>기타</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="title"><span class="essential">*</span>처리방법</td>
+            <td>
+              <input type="radio" name="method" value="immediately" >즉시등록</input>
+              <input type="radio" name="method" value="temporary" >임시저장</input>
+            </td>
+          </tr>
+          <tr>
+            <td class="title"><span class="essential">*</span>개인정보 동의</td>
+            <td>
+              <input type="radio" name="agree" value="agree" >동의함</input>
+              <input type="radio" name="agree" value="disagree" >동의 안함</input>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="button-wrap">
+        <input type="submit" value="거래처 등록"/>
+        <input type="reset" value="취소"/>
+      </div>
+    </form>
+  </section>
+</body>
+</html>

@@ -1,0 +1,33 @@
+extends layout
+
+block content 
+  script(src='/javascripts/admin.js')
+  header 
+  nav
+    if categorys
+      ul
+        each category in categorys
+          if category.id === 1 
+            li.now(value=category.id) #{category.name}
+          else
+            li(value=category.id) #{category.name}
+    div#line
+  main.admin-main 
+    section 
+      div.items
+        if products
+          -for (var i = 0; i< 12; i++)
+            if products[i]
+              div.admin-item
+                img(src=products[i].fileUrl)
+                span(id=products[i].id)=products[i].name
+                span.price=products[i].price
+            else 
+              div.admin-item.none
+        else
+          p 등록된 항목이 없습니다.
+      div.modal-container(onclick="closeModal()")
+      div.modal
+      div.btn-wrap 
+        button.logout 로그아웃
+        button.add 추가하기

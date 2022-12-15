@@ -1,0 +1,12 @@
+extends layout
+
+block content 
+  script(src='/javascripts/login.js')
+  main.login-main
+    section.login-section
+      h1.login 서현이네 
+      h1.login 아재국밥 
+      form(id="login-form", onsubmit="login()")
+        input(type="text", name="adminId", id="adminId" placeholder="아이디 입력")
+        input(type="password", name="password", id="password" placeholder="비밀번호 입력")
+        input(type="submit", value="로그인")

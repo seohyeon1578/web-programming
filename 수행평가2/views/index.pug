@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  header 
+  nav
+    if categorys
+      ul
+        each category in categorys
+          if category.id === 1 
+            li.now(value=category.id) #{category.name}
+          else
+            li(value=category.id) #{category.name}
+    div#line
+  main 
+    section 
+      if products
+        div.items
+          -for (var i = 0; i< 9; i++)
+            if products[i]
+              div.item
+                img(src=products[i].fileUrl)
+                span(id=products[i].id)=products[i].name
+                span.price=products[i].price
+            else 
+              div.item
+      else
+        p 등록된 항목이 없습니다.
+      div.modal-container(onclick="closeModal()")
+      div.modal
+      aside
+        div.total-list
+          div.total-sum-cnt
+            span 카트
+            div 0
+          div.total-sum-mny
+            span 총 주문금액
+            div 0원
+        div.item-slide
+          div.none-shopping 장바구니가 비어 있습니다 
+      div.btn-wrap 
+        button.reset 취소
+        button.order 주문하기
+      
+
